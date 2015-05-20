@@ -31,11 +31,9 @@ int main(int argc, const char * argv[])
 	findFeasibleMatesUsingLabel();
     printFeasibleMates();
 	
-	
 	initializeFeasibleMappings();
 	
 	searchFunction(0);
-	
 	
     return 0;
 }

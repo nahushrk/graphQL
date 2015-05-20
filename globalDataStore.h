@@ -51,8 +51,6 @@ void initializeFeasibleMappings()
 		feasibleMappings.clear();
 	}
 	node n {-1,true};
-//	n.value=0;
-//	n.free=true;
 	for(int i=0;i<pattern.size();i++)
 	{
 		feasibleMappings.push_back(n);

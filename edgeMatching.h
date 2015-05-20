@@ -60,13 +60,7 @@ bool checkFunction(int indexOf_ui, int v)	//v is actual value of Ø(ui)
 			}
 			
 		}
-		/*
-		else
-		{
-			return false;
-		}
-		 */
-    }
+	}
     return true;
 }
 
@@ -78,7 +72,6 @@ void printFeasibleMapping()
 		cout<<feasibleMappings[i].value<<","<<feasibleMappings[i].label<<"\t";
 	}
 	cout<<"\n";
-//	initializeFeasibleMappings();
 }
 
 bool allFeasibleMappingDone()
@@ -137,13 +130,6 @@ bool markNodesOnwards(int loc)
 			}
 		}
 	}
-//	for(int i=(loc-1);i<feasibleMates.size();i++)
-//	{
-//		for(int j=0;j<feasibleMates[i].size();j++)
-//		{
-//			feasibleMates[i][j].free=true;
-//		}
-//	}
 	return true;
 }
 
@@ -156,16 +142,10 @@ bool searchFunction(int indexOf_ui=0)
         {
 			int v=feasibleMates[indexOf_ui][indexOf_v].value;
 			string l=feasibleMates[indexOf_ui][indexOf_v].label;
-			//mark here
-//			markNode(v);
-//			unmarkNodesOnwards(indexOf_ui);
             if(!(checkFunction(indexOf_ui,v)))
                 continue;
             else
             {
-				//ø(ui) <- v
-//				node vnode;
-//				vnode.value=feasibleMates[indexOf_ui][indexOf_v].value;
 				feasibleMappings[indexOf_ui].value=v;
 				feasibleMappings[indexOf_ui].label=l;
 				
@@ -173,33 +153,29 @@ bool searchFunction(int indexOf_ui=0)
 				if(indexOf_ui<(pattern.size()-1))
 				{
 					searchFunction(indexOf_ui+1);
-//					printFeasibleMapping();
 				}
 				else if (allFeasibleMappingDone())
 				{
 					printFeasibleMapping();
 					feasibleMappings[indexOf_ui].value=-1;
 					feasibleMappings[indexOf_ui].label="";
-					if(indexOf_v==(feasibleMates[indexOf_ui].size()-1))	// if(feasibleMappings.size() == pattern.size())
+					if(indexOf_v==(feasibleMates[indexOf_ui].size()-1))
 					{
 						feasibleMappings[indexOf_ui].value=-1;
 						feasibleMappings[indexOf_ui].label="";
-//						unmarkNodesOnwards(indexOf_ui);
 						return true;
 					}
 				}
-				else if(indexOf_v==(feasibleMates[indexOf_ui].size()-1))	// if(feasibleMappings.size() == pattern.size())
+				else if(indexOf_v==(feasibleMates[indexOf_ui].size()-1))
 				{
 					printFeasibleMapping();
 					feasibleMappings[indexOf_ui].value=-1;
 					feasibleMappings[indexOf_ui].label="";
-//					unmarkNodesOnwards(indexOf_ui);
 					return true;
 				}
             }
         }
     }
-//	unmarkNodesOnwards(indexOf_ui);
     return false;
 }
 
